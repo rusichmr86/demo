@@ -1,15 +1,25 @@
-import React  from 'react';
-import logo from './alma.jpg';
-import './App.css';
+import React from 'react';
+import ReactDOM from "react-dom";
+import {BrowserRouter, Routes, Route} from "react-router-dom";
+import Layout from "./pages/Layout";
+import Home from "./pages/Home";
+import Danya from "./pages/Danya";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-      </header>
-    </div>
-  );
+export default function App() {
+    return (
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<Layout/>}>
+                    <Route index element={<Home/>}/>
+                </Route>
+                <Route path="/danya">
+                    <Route index element={<Danya/>}/>
+                </Route>
+                <Route path="/ab">
+                </Route>
+            </Routes>
+        </BrowserRouter>
+    );
 }
 
-export default App;
+ReactDOM.render(<App/>, document.getElementById("root"));
